@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        bg: '#FAFAFA',
+        dark: '#151414',
+        lightGrey: "#F5F5F5",
+        darkGrey: '#E5E5E5',
+        veryDarkGrey: "#747474",
+      },
       fontFamily: {
         satoshi: ['Satoshi-Regular', 'Satoshi-Medium', 'Satoshi-Bold', 'sans-serif'],
         neue: ['NeueRegrade-Regular', 'sans-serif']

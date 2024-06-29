@@ -1,6 +1,6 @@
+@import './neueregrade.css';
+@import './satoshi.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import '/public/Font/Satoshi';
-@import '/public/Font/NeueRegrade';
