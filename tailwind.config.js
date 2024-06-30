@@ -26,9 +26,9 @@ export default {
         'title':'6rem', /** 96px */
         'subtitle':'3.75rem', /** 60px */
         'marque':'1.5rem', /** 24px */
-        'link':'1.5rem', /** 16px */
-        'p':'1.5rem', /** 14px */
-        'author':'1.5rem', /** 12px */
+        'link':'1rem', /** 16px */
+        'p':'.0.875rem', /** 14px */
+        'author':'.75rem', /** 12px */
       },
     },
   },

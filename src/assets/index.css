@@ -4,3 +4,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .grid-rows-custom {
+      grid-template-rows: 0.2fr 0.2fr 1fr;
+    }
+    .grid-rows-custom2 {
+      grid-template-rows: 1.5fr 1fr;
+    }
+  }
+
+body {
+    background: #FAFAFA;
+}
