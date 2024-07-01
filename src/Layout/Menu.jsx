@@ -3,10 +3,14 @@ import React from "react";
 export default function Menu() {
   return (
     <nav className="font-satoshi relative py-4 bg-bg grid items-center justify-center grid-cols-12 grid-rows-1 gap-x-20 px-4">
-      <a href="" className="text-marque col-span-9 flex items-center">
+      <div className="col-span-9">
+      <a href="" className="text-marque w-fit flex items-center">
         Hendry ©
       </a>
-      <a href="" className="col-span-2 flex items-center justify-end">
+      </div>
+
+      <div className="col-span-2">
+      <a href="" className=" flex items-center w-fit justify-end">
         <svg
           width="32"
           height="32"
@@ -21,6 +25,8 @@ export default function Menu() {
         </svg>
         Panier
       </a>
+      </div>
+      
       <a href="" className=" col-span-1 flex items-center justify-end">
         <svg
           width="32"

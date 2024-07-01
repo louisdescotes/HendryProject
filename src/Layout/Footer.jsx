@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <footer>
-      <h1 className=" text-title font-satoshi font-bold">Hendry</h1>
+      <h1 className="text-title font-satoshi font-bold">Hendry</h1>
       <div>
-        <a href="">Accueil</a>
-        <a href="">Collection</a>
+        <Link to="/">Accueil</Link>
+        <Link to="/Collection">Collection</Link>
       </div>
       <div>©2024</div>
     </footer>
-  )
+  );
 }
