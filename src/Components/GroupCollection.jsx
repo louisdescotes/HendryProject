@@ -2,11 +2,13 @@ import React, { useRef, useMemo, useState, useEffect } from "react";
 import { useScroll, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { fragment, vertex } from "./shader";
+import { useNavigate } from "react-router-dom";
 
-export default function GroupCollection({ meshes, x, y }) {
+export default function GroupCollection({ name, meshes, x, y }) {
   const meshRefs = useRef([]);
-  const texture = useTexture("/src/assets/Img/landing/one.jpg");
   const scroll = useScroll();
+  const navigate = useNavigate();
+
   const [scrollDirection, setScrollDirection] = useState(0);
   const [lastScrollOffset, setLastScrollOffset] = useState(scroll.offset);
 
@@ -17,7 +19,6 @@ export default function GroupCollection({ meshes, x, y }) {
         (document.documentElement.scrollHeight - window.innerHeight);
       setLastScrollOffset(newOffset);
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -28,7 +29,7 @@ export default function GroupCollection({ meshes, x, y }) {
   useFrame(() => {
     meshRefs.current.forEach((mesh) => {
       if (mesh.material && mesh.material.uniforms) {
-        let mappedValue = (scroll.offset - lastScrollOffset) * 80;
+        let mappedValue = (scroll.offset - lastScrollOffset) * 20;
 
         if (mappedValue > 0) {
           setScrollDirection(1);
@@ -45,19 +46,31 @@ export default function GroupCollection({ meshes, x, y }) {
     });
   });
 
-  const uniforms = useMemo(
-    () => ({
-      uTexture: { value: texture },
-      uDelta: { value: 0.0 },
-    }),
-    [texture]
-  );
+  const texturePaths = [
+    `/src/assets/Img/${name}/one.jpg`,
+    `/src/assets/Img/${name}/two.jpg`,
+    `/src/assets/Img/${name}/three.jpg`,
+    `/src/assets/Img/${name}/four.jpg`
+  ].slice(0, meshes); 
+
+  const textures = useTexture(texturePaths);
 
   const meshElements = [];
   for (let i = 0; i < meshes; i++) {
+    const uniforms = useMemo(
+      () => ({
+        uTexture: { value: textures[i % textures.length] },
+        uDelta: { value: 0.0 },
+      }),
+      [textures, i]
+    );
+
     meshElements.push(
       <mesh
-        ref={(el) => (meshRefs.current[i] = el)}
+      onClick={() => navigate(`/Pages/ProductPage/${name}`)}
+      onPointerOver={() => (document.body.style.cursor = 'pointer')}
+    onPointerOut={() => (document.body.style.cursor = 'default')}
+      ref={(el) => (meshRefs.current[i] = el)}
         key={i}
         position={[i * 2.2, y, 0]}
       >
